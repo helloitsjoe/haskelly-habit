@@ -1,5 +1,7 @@
 module Main where
 
+doubleMe :: Num a => a -> a
+doubleMe x = x + x
+
 main :: IO ()
--- main = putStrLn "Hello, Haskell!"
-main = putStrLn ("Even numbers:" ++ show (take 10 (filter even [43..])))
+main = print (doubleMe 4 :: Int)
