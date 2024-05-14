@@ -91,5 +91,24 @@ nested = [[1..10], [11..20], [21..30]]
 nestedEven :: [[Int]] -> [[Int]]
 nestedEven xxs = [[ x | x <- xs, even x] | xs <- xxs]
 
+-- Tuples
+
+fist :: Int
+fist = fst (35, 67)
+
+sound :: Int
+sound = snd (35, 67)
+
+zipped :: [(Int, String)]
+zipped = zip [1..] ["apple", "orange", "banana"]
+
+-- Problem: Which right triangle that has integers for all sides and all sides
+-- <= 10 has a perimeter of 24?
+
+rightRight :: [(Int, Int, Int)]
+rightRight = [ (a, b, c) |
+  c <- [1..10], b <- [1..c], a <- [1..b],
+  a^2 + b^2 == c^2 && a + b + c == 24]
+
 main :: IO ()
-main = print (nestedEven nested)
+main = print rightRight
