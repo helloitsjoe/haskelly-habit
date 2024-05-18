@@ -23,5 +23,9 @@ head' :: [a] -> a
 head' [] = error "Can't call head on an empty list"
 head' (x:_) = x
 
+tell :: (Show a) => [a] -> String
+tell [] = "Empty!"
+tell (x:[]) = "The list has one element: " ++ show x
+
 main :: IO ()
-main = print (head [1, 2, 3])
+main = print (tell [1])
