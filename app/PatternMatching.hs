@@ -25,7 +25,22 @@ head' (x:_) = x
 
 tell :: (Show a) => [a] -> String
 tell [] = "Empty!"
-tell (x:[]) = "The list has one element: " ++ show x
+tell [x] = "The list has one element: " ++ show x
+tell [x,y] = "The list has two elements: " ++ show x ++ " and " ++ show y
+tell (x:y:_) = "The list is long! The first two elements are: " ++ show x ++ " and " ++ show y
+
+-- Pattern matching + recursion
+length' :: [a] -> Int
+length' [] = 0
+length' (_:xs) = length' xs + 1
+
+sum' :: (Num a) => [a] -> a
+sum' [] = 0
+sum' (x:xs) = x + sum xs
+
+capital :: String -> String
+capital "" = "Empty string!"
+capital all@(x:xs) = "The first letter of " ++ all ++ " is: " ++ [x]
 
 main :: IO ()
-main = print (tell [1])
+main = print (capital "hello")
