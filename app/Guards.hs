@@ -33,5 +33,36 @@ calcCoffeeRatio :: (Fractional a, Ord a) => [(a, a)] -> [a]
 calcCoffeeRatio xs = [getRatio c w | (c, w) <- xs]
   where getRatio c w = w / c
 
+-- `let`/`in` bindings
+cylinder :: (RealFloat a) => a -> a -> a
+cylinder r h =
+  let topArea = pi * r ^ 2
+      sideArea = 2 * pi * r * h
+  in topArea * 2 + sideArea
+
+sumTriple :: (Num a) => (a, a, a) -> a
+sumTriple tup = let (a, b, c) = tup in (a + b + c)
+
+-- define scoped functions inline with let
+squareTriple :: (Num a) => (a, a, a) -> [(a, a, a)]
+squareTriple (a, b, c) = [let square x = x * x in (square a, square b, square c)]
+
+-- Same coffee / water ratio calculation but with a list comprehension
+calcCoffeeRatioComprehension :: (RealFloat a) => [(a, a)] -> [a]
+calcCoffeeRatioComprehension xs = [calc | (c, w) <- xs, let calc = w / c]
+
+-- case expressions
+describeList :: [a] -> String
+describeList xs = "The list is " ++ case xs of [] -> "empty."
+                                               [x] -> "a single element long."
+                                               xs -> "longer than a single element."
+
+-- alternative using where
+describeList' :: [a] -> String
+describeList' xs = "The list is " ++ what xs
+  where what [] = "empty."
+        what [x] = "a single element long."
+        what xs = "longer than a single element."
+
 main :: IO ()
-main = print (calcCoffeeRatio [(50, 800)])
+main = print (squareTriple (1, 2, 3))
