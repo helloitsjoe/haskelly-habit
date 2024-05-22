@@ -21,12 +21,28 @@ replicate' times num
   | otherwise = num:replicate' (times - 1) num
 
 take' :: (Num i, Ord i) => i -> [a] -> [a]
-take' first _
-  | first <= 0 = []
+take' n _
+  | n <= 0 = []
 take' _ [] = []
 take' 1 (x:_) = [x]
-take' first (x:xs) = x:take' (first - 1) xs
+take' n (x:xs) = x:take' (n - 1) xs
+
+reverse' :: [a] -> [a]
+reverse' [] = []
+reverse' (x:xs) = reverse' xs ++ [x]
+
+zip' :: [a] -> [a] -> [(a, a)]
+zip' [] [] = []
+zip' [] _ = []
+zip' _ [] = []
+zip' (x:xs) (y:ys) = (x,y):zip' xs ys
+
+elem' :: (Eq a) => a -> [a] -> Bool
+elem' _ [] = False
+elem' x (y:ys) 
+  | x == y = True
+  | otherwise = elem' x ys
 
 main :: IO ()
-main = print (take' 2 [1, 2, 3])
+main = print (elem' 1 [4,4])
 
