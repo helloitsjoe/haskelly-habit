@@ -43,6 +43,14 @@ elem' x (y:ys)
   | x == y = True
   | otherwise = elem' x ys
 
+quicksort :: (Ord a) => [a] -> [a]
+quicksort [] = []
+quicksort (x:xs) =
+  let smallerSorted = quicksort [a | a <- xs, a <= x]
+      largerSorted = quicksort [a | a <- xs, a > x]
+  in smallerSorted ++ [x] ++ largerSorted
+  -- if x < y then [x] ++ quicksort (y:xs) else [y] ++ quicksort (x:xs)
+
 main :: IO ()
-main = print (elem' 1 [4,4])
+main = print (quicksort [5, 2, 3, 4, 1])
 
