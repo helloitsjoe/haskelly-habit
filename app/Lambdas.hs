@@ -1,3 +1,5 @@
+module Lambdas where
+
 quicksort :: (Ord a) => [a] -> [a]
 quicksort [] = []
 quicksort (x:xs) =

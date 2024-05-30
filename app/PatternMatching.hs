@@ -1,3 +1,5 @@
+module PatternMatching where
+
 lucky :: (Integral a) => a -> String
 lucky 7 = "Lucky number 7!"
 lucky _ = "Sorry!"

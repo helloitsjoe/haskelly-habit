@@ -1,3 +1,5 @@
+module HigherOrder where
+
 zipWith' :: (a -> b -> c) -> [a] -> [b] -> [c]
 zipWith' _ [] _ = []
 zipWith' _ _ [] = []

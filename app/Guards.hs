@@ -1,3 +1,5 @@
+module Guards where
+
 coffeeToWaterRatio :: (Fractional a, Ord a) => a -> a-> String
 coffeeToWaterRatio coffee water
   | ratio >= weak = "Too weak!"

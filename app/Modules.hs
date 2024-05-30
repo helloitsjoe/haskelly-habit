@@ -1,3 +1,5 @@
+module Modules where
+
 import Data.List (nub, transpose, partition)
 
 numUnique :: (Eq a) => [a] -> Int
