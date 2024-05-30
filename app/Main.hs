@@ -1,5 +1,5 @@
 module Main where
-import Modules (partitioned)
+import Modules
 
 main :: IO ()
-main = print partitioned
+main = print Modules.multiline
