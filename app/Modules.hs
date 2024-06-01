@@ -52,5 +52,8 @@ caesarize shift text =
   in map chr shifted
 -- With composition: caesarize shift = map (chr . (+ shift) . ord) 
 
+uncaesarize :: Int -> String -> String
+uncaesarize shift = caesarize (negate shift)
+
 main :: IO ()
-main = print (caesarize 2 "hello")
+main = print (uncaesarize 2 (caesarize 2 "hello"))
