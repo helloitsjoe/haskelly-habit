@@ -2,6 +2,7 @@ module Modules where
 
 import Data.List (nub, transpose, partition, intersect)
 import Data.Char as C
+import Geometry.Sphere (volume)
 
 numUnique :: (Eq a) => [a] -> Int
 numUnique = length . nub
@@ -56,4 +57,4 @@ uncaesarize :: Int -> String -> String
 uncaesarize shift = caesarize (negate shift)
 
 main :: IO ()
-main = print (uncaesarize 2 (caesarize 2 "hello"))
+main = print (volume 4)
