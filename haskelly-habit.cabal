@@ -61,7 +61,16 @@ executable haskelly-habit
     main-is:          Main.hs
 
     -- Modules included in this executable, other than Main.
-    other-modules:    Intro, PatternMatching, Guards, Recursion, HigherOrder, Lambdas, Modules, Geometry.Sphere
+    other-modules:
+        Intro,
+        PatternMatching,
+        Guards,
+        Recursion,
+        HigherOrder,
+        Lambdas,
+        Modules,
+        Geometry.Sphere,
+        Typeclasses
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
@@ -70,7 +79,7 @@ executable haskelly-habit
     build-depends:    base ^>=4.17.2.1
 
     -- Directories containing source files.
-    hs-source-dirs:   app
+    hs-source-dirs:   src
 
     -- Base language which the package is written in.
     default-language: Haskell2010
