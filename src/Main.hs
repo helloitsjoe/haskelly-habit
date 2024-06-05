@@ -1,6 +1,6 @@
 module Main where
 
-import Typeclasses
+import Deriving
 
 main :: IO ()
-main = Typeclasses.main
+main = Deriving.main

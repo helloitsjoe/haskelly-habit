@@ -70,7 +70,8 @@ executable haskelly-habit
         Lambdas,
         Modules,
         Geometry.Sphere,
-        Typeclasses
+        Typeclasses,
+        Deriving
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
