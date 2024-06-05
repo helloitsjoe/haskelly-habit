@@ -28,7 +28,21 @@ data Person = Person { firstName :: String
                      , favoriteFlavor :: String
                      } deriving (Show)
 
-guy = Person "George" "Gefferson" 42 3.5 "1-234-567-8910" "Blue Razzleberry"
+-- guy = Person "George" "Gefferson" 42 3.5 "1-234-567-8910" "Blue Razzleberry"
+guy = Person { firstName="George", lastName="Gefferson", age=42, height=3.5, phoneNumber="1-234-567-8910", favoriteFlavor="Blue Razzleberry"}
+
+data Vector a = Vector a a a deriving (Show)
+
+vplus :: (Num t) => Vector t -> Vector t -> Vector t
+(Vector i j k) `vplus` (Vector l m n) = Vector (i + l) (j + m) (k + n)
+
+vmult :: (Num t) => Vector t -> Vector t -> Vector t
+(Vector i j k) `vmult` (Vector l m n) = Vector (i * l) (j * m) (k * n)
+
+scalarMult :: (Num t) => Vector t -> Vector t -> t
+(Vector i j k) `scalarMult` (Vector l m n) = i*l + j*m + k*n
+
+vecs = Vector 1 2 3 `scalarMult` Vector 4 5 6
 
 main :: IO ()
-main = print guy
+main = print vecs
