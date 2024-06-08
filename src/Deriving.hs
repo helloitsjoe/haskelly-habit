@@ -38,7 +38,11 @@ phoneBook = [("123-4567", "Jackie")
 
 inPhoneBook :: Name -> PhoneBook -> Bool
 inPhoneBook n book = elem n $ map snd book
+
+getInPhoneBook :: Name -> PhoneBook -> Maybe PhoneNumber
+getInPhoneBook _ [] = Nothing
+getInPhoneBook n ((num, maybeName):xs) = if n == maybeName then Just num else getInPhoneBook n xs
   
  
 main :: IO ()
-main = print (inPhoneBook "Jaokie" phoneBook)
+main = print (getInPhoneBook "Jackie" phoneBook)
