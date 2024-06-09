@@ -1,6 +1,7 @@
 module Deriving where
 
 import Data.List ((\\))
+import qualified Data.Map as Map
 
 data Person = Person { name :: String
                      , age :: Int
@@ -42,7 +43,23 @@ inPhoneBook n book = elem n $ map snd book
 getInPhoneBook :: Name -> PhoneBook -> Maybe PhoneNumber
 getInPhoneBook _ [] = Nothing
 getInPhoneBook n ((num, maybeName):xs) = if n == maybeName then Just num else getInPhoneBook n xs
+
+data LockerState = Taken | Free deriving (Show, Eq)
+
+type Code = String
+type LockerMap = Map.Map Int (LockerState, Code)
+
+getLockerCode :: Int -> LockerMap -> Either String Code
+getLockerCode i lMap =
+  case Map.lookup i lMap of
+    Nothing -> Left ("Locker number " ++ show i ++ " does not exist.")
+    Just (state, code) -> if state == Taken
+                             then Left ("Locker number " ++ show i ++ " is taken.")
+                             else Right code
+
+lockerCodes :: LockerMap
+lockerCodes = Map.fromList [(100, (Free, "123")), (101, (Taken, "456")), (102, (Free, "789"))]
   
  
 main :: IO ()
-main = print (getInPhoneBook "Jackie" phoneBook)
+main = print (getLockerCode 101 lockerCodes)
