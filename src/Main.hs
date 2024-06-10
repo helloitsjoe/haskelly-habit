@@ -1,6 +1,6 @@
 module Main where
 
-import Deriving
+import RecursiveDataTypes
 
 main :: IO ()
-main = Deriving.main
+main = RecursiveDataTypes.main

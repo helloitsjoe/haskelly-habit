@@ -71,7 +71,8 @@ executable haskelly-habit
         Modules,
         Geometry.Sphere,
         Typeclasses,
-        Deriving
+        Deriving,
+        RecursiveDataTypes
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
