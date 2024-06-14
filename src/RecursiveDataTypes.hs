@@ -12,5 +12,13 @@ infixr 5 .++.
 Empty .++. xs = xs
 (z :-: zs) .++. as  = z :-: (zs .++. as)
 
+data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving (Show, Read, Eq)
+
+createTree :: a -> Tree a
+createTree x = Node x EmptyTree EmptyTree
+
+treeInsert :: a -> Tree a
+treeInsert x = undefined
+
 main :: IO ()
-main = print (3 :-: (1 :-: Empty))
+main = print (treeInsert 3)
