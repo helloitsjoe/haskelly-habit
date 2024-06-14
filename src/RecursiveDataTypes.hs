@@ -14,7 +14,7 @@ Empty .++. xs = xs
 
 data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving (Show, Read, Eq)
 
-treeInsert :: (Num a, Ord a) => a -> Tree a -> Tree a
+treeInsert :: (Ord a) => a -> Tree a -> Tree a
 treeInsert x EmptyTree = Node x EmptyTree EmptyTree
 treeInsert x (Node y left right)
   | x < y = Node y (treeInsert x left) right
@@ -22,12 +22,20 @@ treeInsert x (Node y left right)
   | x == y = Node x left right
 treeInsert _ (Node {}) = EmptyTree
 
-treeCreate :: (Num a, Ord a) => [a] -> Tree a
+treeCreate :: (Ord a) => [a] -> Tree a
 -- treeCreate = foldl (\ acc c -> treeInsert c acc) EmptyTree
 treeCreate = foldr treeInsert EmptyTree
+
+treeElem :: (Ord a) => a -> Tree a -> Bool
+treeElem _ EmptyTree = False
+treeElem x (Node y left right)
+  | x == y = True
+  | x < y = treeElem x left
+  | x > y = treeElem x right
+treeElem _ (Node {}) = False
 
 -- tree = treeInsert 5 (treeInsert 4 (treeInsert 3 EmptyTree))
 tree = treeCreate [3, 4, 1]
 
 main :: IO ()
-main = print tree
+main = print (treeElem 5 tree)
