@@ -1,6 +1,6 @@
 module Main where
 
-import RecursiveDataTypes
+import Typeclasses102
 
 main :: IO ()
-main = RecursiveDataTypes.main
+main = Typeclasses102.main

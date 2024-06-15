@@ -71,6 +71,7 @@ executable haskelly-habit
         Modules,
         Geometry.Sphere,
         Typeclasses,
+        Typeclasses102,
         Deriving,
         RecursiveDataTypes
 
