@@ -7,5 +7,20 @@ class Eq' a where
   x === y = not (x /== y)
   x /== y = not (x === y)
 
+data TrafficLight = Red | Green | Yellow
+
+-- class is for defining new Typeclasses
+-- instance is for making our types instances of Typeclasses
+instance Eq' TrafficLight where
+  Red === Red = True
+  Yellow === Yellow = True
+  Green === Green = True
+  _ === _ = False
+
+instance Show TrafficLight where
+  show Red = "Red light"
+  show Green = "Green light"
+  show Yellow = "Yellow light"
+
 main :: IO ()
-main = print "Hello"
+main = print [Red, Yellow, Green]
